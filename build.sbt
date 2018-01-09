@@ -6,9 +6,9 @@ scalaVersion := "2.12.4"
 
 libraryDependencies ++= {
 
-  val AkaaStreamKafka = "0.18"
+  val AkkaStreamKafka = "0.18"
 
   Seq(
-    "com.typesafe.akka" %% "akka-stream-kafka" % AkaaStreamKafka withSources() withJavadoc()
+    "com.typesafe.akka" %% "akka-stream-kafka" % AkkaStreamKafka withSources() withJavadoc()
   )
 }
