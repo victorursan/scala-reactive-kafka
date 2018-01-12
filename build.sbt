@@ -25,7 +25,8 @@ libraryDependencies ++= Seq(
 
 )
 
-lazy val producer = (project in file("producer")).settings(commonSettings: _*)
-lazy val consumer = (project in file("consumer")).settings(commonSettings: _*)
+lazy val common = (project in file("common")).settings(commonSettings: _*)
+lazy val producer = (project in file("producer")).settings(commonSettings: _*).dependsOn(common)
+lazy val consumer = (project in file("consumer")).settings(commonSettings: _*).dependsOn(common)
 
-lazy val root = (project in file(".")).aggregate(producer, consumer)
+lazy val root = (project in file(".")).aggregate(common, producer, consumer)
