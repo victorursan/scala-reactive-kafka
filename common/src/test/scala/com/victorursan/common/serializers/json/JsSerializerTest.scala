@@ -1,4 +1,4 @@
-package com.victorursan.serializers.json
+package com.victorursan.common.serializers.json
 
 import org.json4s.JsonAST.JValue
 import org.json4s.native.JsonMethods.{compact, parse, render}

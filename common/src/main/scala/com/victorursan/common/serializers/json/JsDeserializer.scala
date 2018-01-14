@@ -1,4 +1,4 @@
-package com.victorursan.serializers.json
+package com.victorursan.common.serializers.json
 
 import java.io.ByteArrayInputStream
 

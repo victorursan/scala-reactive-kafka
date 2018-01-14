@@ -1,4 +1,4 @@
-package com.victorursan.helpers
+package com.victorursan.common.helpers
 
 import java.net.URI
 

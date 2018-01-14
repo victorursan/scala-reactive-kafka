@@ -1,4 +1,4 @@
-package com.victorursan.serializers.json
+package com.victorursan.common.serializers.json
 
 import org.apache.kafka.common.serialization.Serializer
 import org.json4s.JsonAST.{JNothing, JValue}
