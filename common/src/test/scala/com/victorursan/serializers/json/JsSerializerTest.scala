@@ -10,13 +10,13 @@ class JsSerializerTest extends Specification with AfterAll with Mockito {
 
   val serializer = new JsSerializer()
 
-  "The JSON Serializer should" >> {
-    "be able to serialize an empty JSON" >> {
+  "The JSON Serializer" should {
+    "be able to serialize an empty JSON" in {
       val emptyJson = parse(""" {} """)
       serializer.serialize(anyString, emptyJson) must_== compact(render(emptyJson)).getBytes
     }
 
-    "be able to serialize any JSON" >> {
+    "be able to serialize any JSON" in {
       val randomJson: JValue = parse(s"""{"$anyString": $anyInt, "$anyString": ${anyListOf[Int]} }""")
       serializer.serialize(anyString, randomJson) must_== compact(render(randomJson)).getBytes
     }

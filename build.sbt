@@ -18,12 +18,6 @@ lazy val commonSettings = Seq(
       "org.specs2" %% "specs2-mock" % Specs2 % Test
     )
   }
-
-
-)
-
-libraryDependencies ++= Seq(
-
 )
 
 lazy val common = (project in file("common")).settings(commonSettings: _*)
