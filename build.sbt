@@ -14,7 +14,8 @@ lazy val commonSettings = Seq(
       "com.typesafe.akka" %% "akka-stream-kafka" % AkkaStreamKafka withSources() withJavadoc(),
 
       //tests
-      "org.specs2" %% "specs2-core" % Specs2 % Test
+      "org.specs2" %% "specs2-core" % Specs2 % Test,
+      "org.specs2" %% "specs2-mock" % Specs2 % Test
     )
   }
 
