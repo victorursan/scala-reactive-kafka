@@ -20,6 +20,15 @@ class JsDeserializerTest extends Specification with AfterAll with Mockito {
       val randomJson: JValue = parse(s"""{"$anyString": $anyInt, "$anyString": ${anyListOf[Int]} }""")
       deserialiazer.deserialize(anyString, compact(render(randomJson)).getBytes) must_== randomJson
     }
+
+    "be able to deserialize serialized JSON from JsSerializer" >> {
+      val serializer = new JsSerializer()
+      val randomJson: JValue = parse(s"""{"$anyString": $anyInt, "$anyString": ${anyListOf[Int]} }""")
+      val topic = anyString
+      val serialized = serializer.serialize(topic, randomJson)
+      serializer.close()
+      deserialiazer.deserialize(topic, serialized) must_== randomJson
+    }
   }
 
   def afterAll(): Unit = {
