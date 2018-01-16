@@ -11,3 +11,7 @@ class JsSerializer extends Serializer[JValue] {
 
   override def close(): Unit = Unit
 }
+
+object JsSerializer {
+  def apply(): JsSerializer = new JsSerializer()
+}

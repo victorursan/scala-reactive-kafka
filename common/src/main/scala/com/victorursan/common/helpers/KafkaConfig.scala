@@ -1,7 +1,6 @@
-package com.victorursan
+package com.victorursan.common.helpers
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.victorursan.common.helpers.KafkaHelper
 
 import scala.collection.JavaConverters._
 
