@@ -8,3 +8,7 @@ libraryDependencies ++= {
     "org.apache.kafka" % "kafka-clients" % "1.0.0" withSources() withJavadoc()
   )
 }
+
+PB.targets in Compile := Seq(
+  scalapb.gen() -> (sourceManaged in Compile).value
+)

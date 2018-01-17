@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.victorursan.common.serializers;
+
+option java_package = "com.victorursan.common.serializers.protobuf";
+option java_outer_classname = "MessageProtos";
+
+message Message {
+    int32 id = 1;
+    string name = 2;
+    int32 randomNumber = 3;
+}
+

@@ -13,5 +13,6 @@ class JsDeserializer extends Deserializer[JValue] {
 }
 
 object JsDeserializer {
+
   def apply(): JsDeserializer = new JsDeserializer()
 }
