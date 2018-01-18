@@ -8,13 +8,13 @@ trait KafkaConfig {
   protected val kafkaConfig: Config = ConfigFactory.parseResourcesAnySyntax("kafka.conf")
     .withFallback(ConfigFactory.parseMap(
       Map(
-        "kafka.url" -> "http://localhost:9092",
+        "kafka.url" -> "http://192.168.99.100:9092",
         "kafka.topics" -> """["test"]""",
         "kafka.group.id" -> "groupx",
       ).asJava))
 
-  protected val kafkaUrl: String = KafkaHelper.kafkaUrl(kafkaConfig)
-  protected val kafkaTopics: Set[String] = KafkaHelper.kafkaTopics(kafkaConfig)
-  protected val kafkaGroupId: String = KafkaHelper.kafkaGroupId(kafkaConfig)
+  protected lazy val kafkaUrl: String = KafkaHelper.kafkaUrl(kafkaConfig)
+  protected lazy  val kafkaTopics: Set[String] = KafkaHelper.kafkaTopics(kafkaConfig)
+  protected lazy  val kafkaGroupId: String = KafkaHelper.kafkaGroupId(kafkaConfig)
 
 }

@@ -7,6 +7,7 @@ import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.Sink
 import com.victorursan.common.helpers.KafkaConfig
 import com.victorursan.common.serializers.json.JsDeserializer
+import com.victorursan.common.serializers.protobuf.ProtoDeserializer
 import org.apache.kafka.common.serialization.{Deserializer, StringDeserializer}
 
 
@@ -15,10 +16,11 @@ object SimpleConsumer extends App with KafkaConfig {
   implicit val system: ActorSystem = ActorSystem()
   implicit val materializer: ActorMaterializer = ActorMaterializer()
 
-  private val jsDeserializer: Deserializer[_] = JsDeserializer()
+  private val deserializer: Deserializer[_] = ProtoDeserializer()
+    //JsDeserializer()
   private val keyDeserializer = new StringDeserializer()
 
-  private val consumerSettings = ConsumerSettings(system, keyDeserializer, jsDeserializer)
+  private val consumerSettings = ConsumerSettings(system, keyDeserializer, deserializer)
     .withBootstrapServers(kafkaUrl)
     .withGroupId(kafkaGroupId)
 
