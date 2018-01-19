@@ -5,6 +5,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import scala.collection.JavaConverters._
 
 trait KafkaConfig {
+
   protected val kafkaConfig: Config = ConfigFactory.parseResourcesAnySyntax("kafka.conf")
     .withFallback(ConfigFactory.parseMap(
       Map(
@@ -14,7 +15,7 @@ trait KafkaConfig {
       ).asJava))
 
   protected lazy val kafkaUrl: String = KafkaHelper.kafkaUrl(kafkaConfig)
-  protected lazy  val kafkaTopics: Set[String] = KafkaHelper.kafkaTopics(kafkaConfig)
-  protected lazy  val kafkaGroupId: String = KafkaHelper.kafkaGroupId(kafkaConfig)
+  protected lazy val kafkaTopics: Set[String] = KafkaHelper.kafkaTopics(kafkaConfig)
+  protected lazy val kafkaGroupId: String = KafkaHelper.kafkaGroupId(kafkaConfig)
 
 }

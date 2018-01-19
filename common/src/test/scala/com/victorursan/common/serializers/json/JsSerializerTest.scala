@@ -1,7 +1,7 @@
 package com.victorursan.common.serializers.json
 
 import org.json4s.JsonAST.JValue
-import org.json4s.native.JsonMethods.{compact, parse, render}
+import org.json4s.native.JsonMethods._
 import org.specs2.mock.Mockito
 import org.specs2.mutable.Specification
 import org.specs2.specification.AfterAll
