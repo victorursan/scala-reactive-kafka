@@ -11,16 +11,14 @@ import com.victorursan.common.serializers.protobuf.message.Message
 import org.apache.kafka.common.serialization.{Deserializer, StringDeserializer}
 
 
-object SimpleConsumer extends App with KafkaConfig {
+trait SimpleConsumer[T] extends App with KafkaConfig {
 
   implicit val system: ActorSystem = ActorSystem()
   implicit val materializer: ActorMaterializer = ActorMaterializer()
 
+  def deserializer(): Deserializer[T]
 
-  private val keyDeserializer = new StringDeserializer()
-  private val deserializer: Deserializer[_] = ProtoDeserializer[Message](Message.messageCompanion)//JsDeserializer()
-
-  private val consumerSettings = ConsumerSettings(system, keyDeserializer, deserializer)
+  private val consumerSettings = ConsumerSettings(system, new StringDeserializer(), deserializer())
     .withBootstrapServers(kafkaUrl)
     .withGroupId(kafkaGroupId)
   val subscriptions = Subscriptions.topics(kafkaTopics)
