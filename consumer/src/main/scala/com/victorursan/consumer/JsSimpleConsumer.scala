@@ -1,11 +1,11 @@
 package com.victorursan.consumer
 
+import akka.stream.scaladsl.Sink
 import com.victorursan.common.serializers.json.JsDeserializer
-import org.apache.kafka.common.serialization.Deserializer
 import org.json4s.JsonAST.JValue
 
 object JsSimpleConsumer extends SimpleConsumer[JValue] {
 
-  override def deserializer(): Deserializer[JValue] = JsDeserializer()
-
+  val source = getSource(JsDeserializer())
+  source.map(_.value()).runWith(Sink.foreach(println))
 }
